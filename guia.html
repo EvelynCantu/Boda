@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<style>
+  :root{ color-scheme: light dark;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html,body{ margin:0; }
+  img{ max-width:100%; }
+  [hidden]{ display:none !important; }
+</style>
+</head>
+<body><title>Guía del Día B</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style id="sty">
+:root{
+  --paper:#F4F1E9; --card:#FFFDF8; --soft:#F7F4EC; --ink:#22201C; --ink2:#6E685D; --ink3:#948C7E;
+  --line:#E4DED1; --line2:#D6CEBC; --olive:#3E4C3A; --olive2:#5C6E55; --brass:#9C7734; --brass2:#D8C59B;
+  --bad:#A04E3F; --badbg:#F2DFDA;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.035;
+  background-image:radial-gradient(circle at 15% 25%,#8a7a50 .6px,transparent .7px),
+                   radial-gradient(circle at 68% 72%,#6b5f3a .5px,transparent .6px);
+  background-size:37px 37px,53px 53px}
+img{max-width:100%}
+[hidden]{display:none!important}
+.dsp{font-family:'Bodoni Moda',Didot,'Times New Roman',serif;font-weight:500}
+.wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 18px 72px}
+
+/* portada */
+.cover{text-align:center;padding:46px 0 30px;border-bottom:1px solid var(--line2)}
+.cover .mono{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--brass)}
+.cover h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,8vw,46px);line-height:1.04;
+  margin:14px 0 0;text-wrap:balance}
+.cover .rule{width:52px;height:1px;background:var(--brass2);margin:18px auto}
+.cover .when{font-size:14px;color:var(--ink2)}
+.cover .cd{margin-top:20px;display:inline-flex;align-items:baseline;gap:9px;border:1px solid var(--line2);
+  border-radius:999px;padding:8px 18px;background:var(--card)}
+.cover .cd b{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500}
+.cover .cd span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+
+/* nav */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin:0 -18px;padding:10px 18px;
+  background:rgba(244,241,233,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:none;font-size:12.5px;padding:7px 13px;border-radius:999px;border:1px solid var(--line2);
+  background:var(--card);color:var(--ink2);text-decoration:none;white-space:nowrap}
+.tabs a.on{background:var(--olive);border-color:var(--olive);color:#F2EEE3}
+
+/* secciones */
+section{padding-top:30px;scroll-margin-top:96px}
+.eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);
+  display:flex;align-items:center;gap:9px}
+.eyebrow:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line2),transparent)}
+h2{font-family:'Bodoni Moda',serif;font-weight:500;font-size:25px;margin:9px 0 3px;line-height:1.1}
+.lede{color:var(--ink2);font-size:13.5px;margin:0 0 16px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:16px;
+  box-shadow:0 12px 30px -26px rgba(40,34,20,.6)}
+.card+.card{margin-top:11px}
+.rows>div{display:flex;gap:13px;padding:11px 0;border-top:1px solid var(--line);align-items:flex-start}
+.rows>div:first-child{border-top:none}
+.hr{font-family:'Bodoni Moda',serif;font-size:16px;flex:none;width:58px;line-height:1.2}
+.hr small{display:block;font-family:'Jost',sans-serif;font-size:10.5px;color:var(--ink3);letter-spacing:.04em}
+.main{flex:1;min-width:0}
+.t{font-size:14.5px;line-height:1.35}
+.meta{font-size:11.5px;color:var(--ink2);margin-top:3px;display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.tag{font-size:10.5px;padding:2px 8px;border-radius:999px;background:var(--soft);border:1px solid var(--line);color:var(--ink2)}
+.done{text-decoration:line-through;color:var(--ink3)}
+.tel{flex:none;display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--olive2);
+  text-decoration:none;border:1px solid var(--line2);border-radius:9px;padding:5px 9px;background:var(--soft)}
+.tel:hover{border-color:var(--brass2)}
+
+.mesas{display:grid;gap:11px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.mesa{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:14px}
+.mesa h3{font-family:'Bodoni Moda',serif;font-weight:500;font-size:16px;margin:0 0 2px}
+.mesa .cnt{font-size:11px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase}
+.mesa ul{margin:9px 0 0;padding:0;list-style:none}
+.mesa li{font-size:13px;padding:4px 0;border-top:1px dashed var(--line)}
+.mesa li:first-child{border-top:none}
+.mesa li i{font-style:normal;color:var(--ink3);font-size:11.5px}
+
+.veto{border:1.5px solid var(--bad);background:var(--badbg);border-radius:14px;padding:16px;margin-bottom:13px}
+.veto h3{font-family:'Bodoni Moda',serif;font-weight:500;font-size:17px;margin:0 0 3px;color:var(--bad)}
+.veto .sub{font-size:11.5px;color:var(--bad);opacity:.85;margin-bottom:9px}
+.veto .rows>div{border-color:rgba(160,78,63,.22)}
+.veto .lvl{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--bad);font-weight:500;flex:none}
+
+.moment{margin-bottom:15px}
+.moment .mh{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:6px}
+
+.empty{text-align:center;padding:40px 18px;color:var(--ink2);border:1px dashed var(--line2);border-radius:15px;background:var(--card)}
+.empty h3{font-family:'Bodoni Moda',serif;font-weight:500;font-size:19px;margin:0 0 6px;color:var(--ink)}
+.empty p{margin:0 auto;max-width:40ch;font-size:13.5px}
+
+.foot{margin-top:44px;padding-top:16px;border-top:1px solid var(--line2);display:flex;
+  justify-content:space-between;align-items:center;gap:12px;font-size:11.5px;color:var(--ink3);flex-wrap:wrap}
+.foot button{background:none;border:none;color:var(--ink3);cursor:pointer;font-family:inherit;font-size:11.5px;
+  padding:4px 8px;border-radius:8px}
+.foot button:hover{color:var(--olive2);background:var(--soft)}
+
+/* panel de actualización */
+.scrim{position:fixed;inset:0;z-index:60;background:rgba(30,26,16,.5);display:flex;align-items:center;
+  justify-content:center;padding:18px}
+.panel{background:var(--paper);border:1px solid var(--line2);border-radius:18px;max-width:520px;width:100%;
+  max-height:86vh;overflow:auto;padding:20px}
+.panel h3{font-family:'Bodoni Moda',serif;font-weight:500;font-size:20px;margin:0 0 4px}
+.panel p{font-size:12.5px;color:var(--ink2);margin:0 0 13px}
+.panel textarea{width:100%;min-height:130px;font-family:ui-monospace,Consolas,monospace;font-size:11.5px;
+  padding:11px;border:1px solid var(--line2);border-radius:11px;background:var(--card);color:var(--ink);resize:vertical}
+.panel textarea:focus{outline:none;border-color:var(--brass);box-shadow:0 0 0 3px rgba(156,119,52,.2)}
+.btn{cursor:pointer;border-radius:11px;font-size:13.5px;padding:11px 16px;border:1px solid var(--line2);
+  background:var(--card);color:var(--ink);font-family:inherit;display:inline-flex;align-items:center;
+  justify-content:center;gap:7px;width:100%}
+.btn.pri{background:linear-gradient(140deg,#4E5C47,#33402F);color:#F2EEE3;border-color:transparent}
+.btn+.btn{margin-top:8px}
+.msg{font-size:12.5px;padding:10px 12px;border-radius:10px;margin-top:11px}
+.msg.ok{background:#E5EDE0;color:#42632F}
+.msg.err{background:var(--badbg);color:var(--bad)}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media print{
+  body{background:#fff}
+  body:before,.tabs,.foot,.scrim{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .card,.mesa,.veto,.empty{box-shadow:none;break-inside:avoid}
+  section{break-inside:auto;padding-top:18px}
+  @page{margin:14mm}
+}
+</style>
+
+<div class="wrap" id="app"></div>
+<script type="application/json" id="payload">{}</script>
+<script id="code">
+/* ======================================================================
+   Guía del Día B — vista pública, de solo lectura.
+   El contenido lo publica la novia desde su planeador privado:
+   pega el paquete de datos en el panel de actualización y la página
+   se vuelve a publicar con esa información para todos.
+====================================================================== */
+var P = {};
+try { P = JSON.parse(document.getElementById("payload").textContent || "{}") || {}; } catch(e) { P = {}; }
+
+var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+var art = null, panel = false, msg = null;
+
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function tel(p){ return String(p||"").replace(/[^\d+]/g,""); }
+function fdate(iso){
+  if(!iso) return "";
+  var d = new Date(iso+"T00:00:00"); if(isNaN(d)) return iso;
+  return d.getDate()+" de "+MESES[d.getMonth()]+" de "+d.getFullYear();
+}
+function days(iso){
+  if(!iso) return null;
+  var d = new Date(iso+"T00:00:00"); if(isNaN(d)) return null;
+  return Math.ceil((d - new Date().setHours(0,0,0,0))/86400000);
+}
+function has(k){ return Array.isArray(P[k]) && P[k].length; }
+
+var SECTIONS = [
+  ["cronograma","Cronograma", function(){ return !!has("timeline"); }],
+  ["mesas","Mesas",           function(){ return !!has("tables"); }],
+  ["musica","Música",         function(){ return has("songs")||has("veto"); }],
+  ["padrinos","Padrinos",     function(){ return !!has("sponsors"); }],
+  ["pendientes","Pendientes", function(){ return !!has("tasks"); }],
+  ["contactos","Contactos",   function(){ return !!has("contacts"); }]
+];
+
+function render(){
+  var live = SECTIONS.filter(function(s){ return s[2](); });
+  var h = cover();
+  if(live.length){
+    h += '<nav class="tabs">' + live.map(function(s,i){
+      return '<a href="#'+s[0]+'"'+(i===0?' class="on"':'')+'>'+esc(s[1])+'</a>'; }).join("") + '</nav>';
+    live.forEach(function(s){ h += secHtml(s[0]); });
+  } else {
+    h += '<section><div class="empty"><h3>Todavía no hay nada publicado</h3>'
+      + '<p>Esta página se llena desde el planeador de la boda. En cuanto se publique el cronograma, '
+      + 'las mesas y la música, aparecerán aquí.</p></div></section>';
+  }
+  h += foot();
+  document.getElementById("app").innerHTML = h;
+  if(panel) document.getElementById("app").insertAdjacentHTML("beforeend", panelHtml());
+  spy();
+}
+
+function cover(){
+  var d = days(P.date);
+  return '<header class="cover">'
+    + '<div class="mono">' + esc(P.city || "Nuestra boda") + '</div>'
+    + '<h1>' + esc(P.couple || "Guía del Día B") + '</h1>'
+    + '<div class="rule"></div>'
+    + '<div class="when">' + (P.date ? esc(fdate(P.date)) : "Fecha por confirmar")
+      + (P.venue ? '<br>' + esc(P.venue) : "") + '</div>'
+    + (d != null && d >= 0
+        ? '<div class="cd"><b>' + (d === 0 ? "Hoy" : d) + '</b><span>' + (d === 0 ? "es el día" : (d === 1 ? "día" : "días")) + '</span></div>'
+        : "")
+    + '</header>';
+}
+
+function secHtml(id){
+  if(id === "cronograma"){
+    return sec(id, "El día", "Cronograma", "Horario del día de la boda. Si algo te toca, tu nombre aparece como responsable.",
+      '<div class="card"><div class="rows">' + P.timeline.map(function(t){
+        return '<div><div class="hr">' + esc(t.t || "—") + (t.e ? '<small>a ' + esc(t.e) + '</small>' : "") + '</div>'
+          + '<div class="main"><div class="t">' + esc(t.title) + '</div><div class="meta">'
+          + (t.block ? '<span class="tag">' + esc(t.block) + '</span>' : "")
+          + (t.owner ? '<span>' + esc(t.owner) + '</span>' : "")
+          + (t.vendor ? '<span>' + esc(t.vendor) + '</span>' : "")
+          + (t.notes ? '<span>' + esc(t.notes) + '</span>' : "")
+          + '</div></div>'
+          + (t.phone ? '<a class="tel" href="tel:' + esc(tel(t.phone)) + '">Llamar</a>' : "")
+          + '</div>'; }).join("") + '</div></div>');
+  }
+  if(id === "mesas"){
+    return sec(id, "Recepción", "Acomodo de mesas", "Quién se sienta dónde.",
+      '<div class="mesas">' + P.tables.map(function(m){
+        var n = (m.guests || []).reduce(function(a,g){ return a + (Number(g.extra) || 0) + 1; }, 0);
+        return '<div class="mesa"><h3>' + esc(m.label || "Mesa") + '</h3>'
+          + '<div class="cnt">' + n + ' de ' + (m.capacity || n) + ' lugares</div>'
+          + ((m.guests && m.guests.length)
+              ? '<ul>' + m.guests.map(function(g){
+                  return '<li>' + esc(g.name) + (g.extra ? ' <i>+' + g.extra + '</i>' : "")
+                    + (g.diet ? ' <i>· ' + esc(g.diet) + '</i>' : "") + '</li>'; }).join("") + '</ul>'
+              : '<ul><li><i>Sin asignar</i></li></ul>')
+          + '</div>'; }).join("") + '</div>');
+  }
+  if(id === "musica"){
+    var veto = has("veto") ? '<div class="veto"><h3>No tocar por ningún motivo</h3>'
+      + '<div class="sub">Aplica para DJ, banda y mariachi.</div><div class="rows">'
+      + P.veto.map(function(b){
+          return '<div><div class="main"><div class="t">' + esc(b.name) + '</div>'
+            + '<div class="meta">' + (b.tipo ? '<span class="tag">' + esc(b.tipo) + '</span>' : "")
+            + (b.reason ? '<span>' + esc(b.reason) + '</span>' : "") + '</div></div>'
+            + '<div class="lvl">' + esc(b.nivel || "") + '</div></div>'; }).join("")
+      + '</div></div>' : "";
+    var byMoment = {}, order = [];
+    (P.songs || []).forEach(function(s){
+      var k = s.moment || "Otros";
+      if(!byMoment[k]){ byMoment[k] = []; order.push(k); }
+      byMoment[k].push(s);
+    });
+    var songs = order.length ? '<div class="card">' + order.map(function(k){
+      return '<div class="moment"><div class="mh">' + esc(k) + '</div><div class="rows">'
+        + byMoment[k].map(function(s){
+            return '<div><div class="main"><div class="t">' + esc(s.title)
+              + (s.artist ? ' <span style="color:var(--ink3)">— ' + esc(s.artist) + '</span>' : "") + '</div>'
+              + '<div class="meta">' + (s.status ? '<span class="tag">' + esc(s.status) + '</span>' : "")
+              + (s.notes ? '<span>' + esc(s.notes) + '</span>' : "") + '</div></div></div>'; }).join("")
+        + '</div></div>'; }).join("") + '</div>' : "";
+    return sec(id, "Para el DJ", "Música", "Lo que debe sonar en cada momento — y lo que no.", veto + songs);
+  }
+  if(id === "padrinos"){
+    return sec(id, "Ceremonia", "Padrinos y cortejo", "Quién apadrina qué.",
+      '<div class="card"><div class="rows">' + P.sponsors.map(function(s){
+        return '<div><div class="main"><div class="t">' + esc(s.name) + '</div>'
+          + '<div class="meta"><span class="tag">' + esc(s.role || "Padrino") + '</span></div></div></div>';
+      }).join("") + '</div></div>');
+  }
+  if(id === "pendientes"){
+    return sec(id, "Estatus", "Pendientes", "Lo que falta por cerrar.",
+      '<div class="card"><div class="rows">' + P.tasks.map(function(t){
+        return '<div><div class="main"><div class="t' + (t.done ? " done" : "") + '">' + esc(t.title) + '</div>'
+          + '<div class="meta">' + (t.due ? '<span>' + esc(fdate(t.due)) + '</span>' : "")
+          + (t.phase ? '<span class="tag">' + esc(t.phase) + '</span>' : "") + '</div></div></div>';
+      }).join("") + '</div></div>');
+  }
+  return sec(id, "Directorio", "Contactos", "A quién marcarle el día del evento.",
+    '<div class="card"><div class="rows">' + P.contacts.map(function(c){
+      return '<div><div class="main"><div class="t">' + esc(c.name) + '</div>'
+        + '<div class="meta">' + (c.role ? '<span>' + esc(c.role) + '</span>' : "") + '</div></div>'
+        + (c.phone ? '<a class="tel" href="tel:' + esc(tel(c.phone)) + '">' + esc(c.phone) + '</a>' : "")
+        + '</div>'; }).join("") + '</div></div>');
+}
+function sec(id, eyebrow, title, lede, body){
+  return '<section id="' + id + '"><div class="eyebrow">' + esc(eyebrow) + '</div>'
+    + '<h2>' + esc(title) + '</h2><p class="lede">' + esc(lede) + '</p>' + body + '</section>';
+}
+function foot(){
+  return '<div class="foot"><span>' + (P.updated ? "Actualizado el " + esc(fdate(P.updated)) : "Guía del Día B")
+    + '</span><span><button onclick="window.print()">Imprimir</button>'
+    + (art ? '<button onclick="panel=true;msg=null;render()">Actualizar</button>' : "")
+    + '</span></div>';
+}
+function panelHtml(){
+  return '<div class="scrim" onclick="if(event.target===this){panel=false;render()}">'
+    + '<div class="panel" role="dialog" aria-modal="true"><h3>Actualizar esta página</h3>'
+    + '<p>Pega el paquete de datos que copiaste desde el planeador (botón <b>Compartir</b> → '
+    + '<b>Copiar para la vista pública</b>) y publica. Todos los que tengan el link verán la versión nueva.</p>'
+    + '<textarea id="pl" placeholder=\'{"couple":"...","date":"..."}\' spellcheck="false"></textarea>'
+    + (msg ? '<div class="msg ' + msg[0] + '">' + esc(msg[1]) + '</div>' : "")
+    + '<button class="btn pri" id="pubBtn" onclick="doPublish()">Publicar actualización</button>'
+    + '<button class="btn" onclick="panel=false;render()">Cancelar</button></div></div>';
+}
+
+async function doPublish(){
+  var raw = document.getElementById("pl").value.trim();
+  if(!raw){ msg = ["err","Pega primero el paquete de datos."]; render(); return; }
+  var data;
+  try{ data = JSON.parse(raw); }
+  catch(e){ msg = ["err","Eso no es un paquete válido. Cópialo otra vez desde el planeador."]; render(); return; }
+  if(!art){ msg = ["err","No tienes permiso para actualizar esta página."]; render(); return; }
+  var btn = document.getElementById("pubBtn");
+  if(btn){ btn.textContent = "Publicando…"; btn.disabled = true; }
+  try{
+    await art.publish(buildDoc(data));
+    msg = ["ok","Publicado. La página se está recargando para todos."];
+    render();
+  }catch(e){
+    var code = e && e.code;
+    msg = ["err", code === "conflict"
+      ? "Alguien más publicó justo antes. La página se va a recargar; vuelve a intentarlo."
+      : (code === "not_writer" || code === "not_granted")
+        ? "No tienes permiso de edición sobre esta página."
+        : "No se pudo publicar. Revisa tu conexión e inténtalo otra vez."];
+    render();
+  }
+}
+
+/** Reconstruye el documento completo con los datos nuevos embebidos. */
+function buildDoc(data){
+  var sty = document.getElementById("sty").textContent;
+  var code = document.getElementById("code").textContent;
+  var json = JSON.stringify(data).replace(/<\//g, "<\\/");
+  return '<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n'
+    + '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
+    + '<title>Guía del Día B</title>\n'
+    + '<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500'
+    + '&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">\n'
+    + '<style id="sty">' + sty + '</style>\n</head>\n<body>\n'
+    + '<div class="wrap" id="app"></div>\n'
+    + '<script type="application/json" id="payload">' + json + '<\/script>\n'
+    + '<script id="code">' + code + '<\/script>\n</body>\n</html>';
+}
+
+/* resalta la pestaña de la sección visible */
+function spy(){
+  var links = [].slice.call(document.querySelectorAll(".tabs a"));
+  if(!links.length) return;
+  var secs = links.map(function(a){ return document.getElementById(a.getAttribute("href").slice(1)); });
+  function upd(){
+    var y = window.scrollY + 130, best = 0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop <= y) best = i; });
+    links.forEach(function(a,i){ a.className = i === best ? "on" : ""; });
+  }
+  window.removeEventListener("scroll", window.__spy || function(){});
+  window.__spy = upd;
+  window.addEventListener("scroll", upd, {passive:true});
+  upd();
+}
+
+render();
+(async function(){
+  try{ art = await window.claude?.use?.("artifact"); }catch(e){ art = null; }
+  if(art) render();
+})();
+</script>
+
+</body>
+</html>
